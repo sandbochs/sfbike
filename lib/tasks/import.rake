@@ -12,8 +12,9 @@ namespace :import do
 
       JSON.parse(response.body).each do |bicycle_parking|
         bp = BicycleParking.new
+        address = bicycle_parking['yr_inst']
+        bp.address = address == 'None' ? 'N/A' : address
         bp.location = bicycle_parking['location_name']
-        bp.address = bicycle_parking['yr_inst']
         bp.racks = bicycle_parking['racks_installed']
         bp.status = bicycle_parking['status']
         bp.status_detail = bicycle_parking['status_detail']
