@@ -33,6 +33,7 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    geocoder (1.1.9)
     hike (1.2.3)
     i18n (0.6.9)
     mail (2.5.4)
@@ -96,6 +97,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  geocoder
   pg
   pry
   rails (= 4.0.3)

@@ -6,6 +6,9 @@ gem 'rails-api'
 # DB
 gem 'pg'
 
+# Util
+gem 'geocoder'
+
 group :development do
   gem 'thin'
   gem 'pry'
