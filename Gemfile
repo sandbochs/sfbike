@@ -9,4 +9,5 @@ gem 'pg'
 group :development do
   gem 'thin'
   gem 'pry'
+  gem 'awesome_print'
 end
