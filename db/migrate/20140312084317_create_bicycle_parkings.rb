@@ -3,11 +3,12 @@ class CreateBicycleParkings < ActiveRecord::Migration
     create_table :bicycle_parkings do |t|
       t.string  :location
       t.string  :address
+      t.integer :racks
       t.string  :status
-      t.string  :status_high_level
+      t.string  :status_detail
       t.string  :year_installed
-      t.decimal :latitude
-      t.decimal :longitude
+      t.float   :latitude
+      t.float   :longitude
 
       t.timestamps
     end

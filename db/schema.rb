@@ -19,11 +19,12 @@ ActiveRecord::Schema.define(version: 20140312084317) do
   create_table "bicycle_parkings", force: true do |t|
     t.string   "location"
     t.string   "address"
+    t.integer  "racks"
     t.string   "status"
-    t.string   "status_high_level"
+    t.string   "status_detail"
     t.string   "year_installed"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
