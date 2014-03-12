@@ -11,9 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140312084317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bicycle_parkings", force: true do |t|
+    t.string   "location"
+    t.string   "address"
+    t.string   "status"
+    t.string   "status_high_level"
+    t.string   "year_installed"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bicycle_parkings", ["latitude", "longitude"], name: "index_bicycle_parkings_on_latitude_and_longitude", using: :btree
 
 end
