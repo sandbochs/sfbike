@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-Sfbike::Application.config.secret_token = 'f2942e527559be9fe0d3174fd0a28253b1ca5a186052ce25e99a7e6adbfdfe09781d3838a66bf9b18df3d538cbe1f199386508c50910f8ce6fac5120ab2c9297'
+Sfbike::Application.config.secret_key_base = 'f2942e527559be9fe0d3174fd0a28253b1ca5a186052ce25e99a7e6adbfdfe09781d3838a66bf9b18df3d538cbe1f199386508c50910f8ce6fac5120ab2c9297'
