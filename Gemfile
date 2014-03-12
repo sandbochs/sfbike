@@ -6,7 +6,7 @@ gem 'rails-api'
 # DB
 gem 'pg'
 
-# Util
+gem 'active_model_serializers'
 gem 'geocoder'
 
 group :development do
