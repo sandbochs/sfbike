@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312084317) do
+ActiveRecord::Schema.define(version: 20140313053617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,5 +30,21 @@ ActiveRecord::Schema.define(version: 20140312084317) do
   end
 
   add_index "bicycle_parkings", ["latitude", "longitude"], name: "index_bicycle_parkings_on_latitude_and_longitude", using: :btree
+
+  create_table "queries", force: true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "state_code"
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "country_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "queries", ["latitude", "longitude", "updated_at"], name: "index_queries_on_latitude_and_longitude_and_updated_at", using: :btree
 
 end
