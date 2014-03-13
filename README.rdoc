@@ -1,28 +1,28 @@
-== README
+## Development environment setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To develop on sfbike, the following dependencies are required:
 
-Things you may want to cover:
+### Bundler
+     > gem install bundler
 
-* Ruby version
+### NodeJS
+    Install the latest Node JS. It can be found her: http://nodejs.org/download
+    Now run the following commands:
 
-* System dependencies
+    `npm install -g grunt-cli`
+    `npm install -g bower`
+    `npm install`
+    `bower install`
 
-* Configuration
+### Install gems
+    > bundle install
 
-* Database creation
+### PostgreSQL
+    > brew install postresql
 
-* Database initialization
+    Ensure /usr/local/bin is before /usr/bin in your PATH environment variable or you will get this error
+       > psql -d postgres
+       > psql: could not connect to server: No such file or directory
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    Create the pgbike user.
+       > createuser -s pgbike

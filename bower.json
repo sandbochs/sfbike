@@ -1,0 +1,12 @@
+{
+  "name": "sfbike",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "angular-google-maps": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest",
+    "angular-scenario": "latest"
+   }
+}

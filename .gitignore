@@ -14,3 +14,23 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+\#*#
+.#*
+ \*Minibuf*\*
+*~
+*.swp
+*.swo
+*.swn
+.bower-cache/*
+.bower-registry/*
+.bower-tmp/*
+.DS_Store
+.project
+.idea
+node_modules/*
+vendor/assets/components/*
+public/assets
+_SpecRunner.html
+.grunt/*
