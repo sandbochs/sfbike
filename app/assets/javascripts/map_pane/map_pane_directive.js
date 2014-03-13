@@ -1,4 +1,4 @@
-sfbike.directive('mapPane', function() {
+angular.module('sfbike').directive('mapPane', function() {
   return {
     restrict: 'A',
     scope: {},

@@ -1,4 +1,4 @@
-sfbike.service('QueryService', ['$window', function(window) {
+angular.module('sfbike').service('QueryService', ['$window', function(window) {
   var service, models;
   models = { coords: {} };
   service = { models: models };

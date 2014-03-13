@@ -50,9 +50,9 @@ module.exports = function(grunt) {
         ],
         options:{
           vendor: [
-            '<%= gruntConfig.components %>/underscore/underscore.min.js',
-            '<%= gruntConfig.components %>/angular/angular.min.js',
-            '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.min.js'
+            '<%= gruntConfig.components %>/underscore/underscore.js',
+            '<%= gruntConfig.components %>/angular/angular.js',
+            '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js'
           ],
           helpers: [
             '<%= gruntConfig.components %>/angular-scenario/angular-scenario.js',
@@ -74,9 +74,9 @@ module.exports = function(grunt) {
        },
        files: {
         '<%= gruntConfig.dist %>/scripts/scripts.js': [
-          '<%= gruntConfig.components %>/underscore/underscore.min.js',
+          '<%= gruntConfig.components %>/underscore/underscore-min.js',
           '<%= gruntConfig.components %>/angular/angular.min.js',
-          '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.min.js',
+          '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js',
           '<%= gruntConfig.scripts %>/sfbike.js',
           '<%= gruntConfig.scripts %>/shared/*.js',
           '<%= gruntConfig.scripts %>/map_pane/*.js'
