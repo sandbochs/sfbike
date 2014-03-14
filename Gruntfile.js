@@ -30,7 +30,9 @@ module.exports = function(grunt) {
       files: [
         '<%= gruntConfig.scripts %>/sfbike.js',
         '<%= gruntConfig.scripts %>/shared/*.js',
-        '<%= gruntConfig.scripts %>/map_pane/*.js'
+        '<%= gruntConfig.scripts %>/map_pane/*.js',
+        '<%= gruntConfig.scripts %>/nav_pane/*.js'
+
       ],
       tasks: ['build']
     }
@@ -45,7 +47,8 @@ module.exports = function(grunt) {
         src: [
           '<%= gruntConfig.scripts %>/sfbike.js',
           '<%= gruntConfig.scripts %>/shared/*.js',
-          '<%= gruntConfig.scripts %>/map_pane/*.js'
+          '<%= gruntConfig.scripts %>/map_pane/*.js',
+          '<%= gruntConfig.scripts %>/nav_pane/*.js'
         ],
         options:{
           vendor: [
@@ -77,7 +80,8 @@ module.exports = function(grunt) {
           '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js',
           '<%= gruntConfig.scripts %>/sfbike.js',
           '<%= gruntConfig.scripts %>/shared/*.js',
-          '<%= gruntConfig.scripts %>/map_pane/*.js'
+          '<%= gruntConfig.scripts %>/map_pane/*.js',
+          '<%= gruntConfig.scripts %>/nav_pane/*.js'
         ]
        }
       }
