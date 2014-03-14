@@ -52,6 +52,7 @@ module.exports = function(grunt) {
         ],
         options:{
           vendor: [
+            'http://maps.googleapis.com/maps/api/js?sensor=false&language=en',
             '<%= gruntConfig.components %>/underscore/underscore.js',
             '<%= gruntConfig.components %>/angular/angular.js',
             '<%= gruntConfig.components %>/angular-sanitize/angular-sanitize.js',
@@ -128,19 +129,19 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'connect:test',
-    'jasmine:sfbike',
+    'jasmine:sfbike'
   ]);
 
   grunt.registerTask('build', [
     'clean:dist',
     'imagemin:dist',
     'htmlmin:dist',
-    'concat:dist',
+    'concat:dist'
   ]);
 
   grunt.registerTask('guard', [
     'build',
-    'watch',
+    'watch'
   ]);
 
   grunt.loadNpmTasks('grunt-contrib-jasmine');
