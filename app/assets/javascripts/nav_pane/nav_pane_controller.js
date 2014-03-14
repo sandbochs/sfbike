@@ -10,13 +10,11 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
   scope.mapModels = mapService.models;
   mapModels = mapService.models;
 
-  scope.models = { query: {}, queryInput: '' };
+  scope.models = { query: {}, queryInput: { address: '' } };
   models = scope.models;
 
   scope.query = function(input) {
-    query = { address: input }
-
-    queryService.save(query).then(function(query) {
+    queryService.save(input).then(function(query) {
       models.query = query;
       scope.renderQuery(query);
     });
@@ -36,5 +34,5 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
     }
   };
 
-  scope.query('351 California St. 94104');
+  scope.query({ address: '351 California St. 94104' });
 }]);

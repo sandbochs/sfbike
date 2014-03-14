@@ -4,8 +4,8 @@ class QueriesController < ApplicationController
   def create
     if params[:address].present?
       query = Query.from_address params[:address]
-    elsif params[:coords].present?
-      query = Query.from_coords params[:coords][:latitude], params[:coords][:longitude]
+    elsif params[:latitude].present? && params[:longitude].present?
+      query = Query.from_coords params[:latitude], params[:longitude]
     end
 
     respond_with query

@@ -2,8 +2,9 @@
   <h3>Nav</h3>
   <div class='query-input'>
     <span class='address-input-title'>Address: </span>
-    <input class='address-input' ng-model='models.queryInput'></input>
+    <input class='address-input' ng-model='models.queryInput.address'></input>
     <button ng-click='query(models.queryInput)'>Query</button>
+    <button ng-click='query(mapModels.options.center)'>Search within map</button>
     <a href='#' ng-click='models.queryInput =""'>clear</a>
   </div>
   <div class='query-meta-data'>
