@@ -1,17 +1,32 @@
 angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', function(window, http, q) {
-  var service, models;
+  var models, service, priv;
   models = { coords: {} };
   service = { models: models, query: {} };
+  priv = {};
 
-  service.query.post = function(params) {
+  priv.queryPost = function(query) {
     var config = {
       url: '/queries',
       method: 'post',
-      data: params,
+      data: query,
       responseType: 'json'
     }
 
     return http(config);
+  }
+
+  service.save = function(query) {
+    var deferred, isValidQuery;
+    deferred = q.defer();
+    isValidQuery = query.address || (query.latitude && query.longitude);
+
+    if(isValidQuery) {
+      priv.queryPost(query).success(function(data) {
+        deferred.resolve(data);
+      });
+    }
+
+    return deferred.promise;
   }
 
   service.getLocation = function() {

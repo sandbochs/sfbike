@@ -3,8 +3,6 @@ angular.module('sfbike').directive('mapPane', function() {
     restrict: 'A',
     scope: {},
     controller: 'MapPaneCtrl',
-    templateUrl: '/templates/map_pane.html',
-    link: function(scope, el, attrs) {
-    }
+    templateUrl: '/templates/map_pane.html'
   };
 });
