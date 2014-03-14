@@ -2,12 +2,26 @@
   <h3>Nav</h3>
   <div class='query-input'>
     <span class='address-input-title'>Address: </span>
-    <input class='address-input' ng-model='models.query.address'></input>
-    <button ng-click='query(models.query)'>Query</button>
-    <a href='#' ng-click='models.query.address =""'>clear</a>
+    <input class='address-input' ng-model='models.queryInput'></input>
+    <button ng-click='query(models.queryInput)'>Query</button>
+    <a href='#' ng-click='models.queryInput =""'>clear</a>
   </div>
   <div class='query-meta-data'>
-    <span class='query-latitude'>Latitude: {{ mapModels.options.center.latitude }}</span>
-    <span class='query-longitude'>Longitude: {{ mapModels.options.center.longitude }}</span>
+    <span class='query-latitude'>Latitude: {{ models.query.latitude }}</span>
+    <span class='query-longitude'>Longitude: {{ models.query.longitude }}</span>
+  </div>
+
+  <div>
+    <div ng-repeat='parking in models.query.nearby_parking'>
+      <span>{{ parking.location }}</span>
+      <button ng-click='renderDirections(models.query, parking)'>Directions</button>
+    </div>
+    <div>
+      <br>
+      Directions
+      <div ng-repeat='step in models.parking.directions.routes[0].legs[0].steps'>
+        <div ng-bind-html='step.instructions'></div>
+      </div>
+    </div>
   </div>
 </div>

@@ -54,6 +54,7 @@ module.exports = function(grunt) {
           vendor: [
             '<%= gruntConfig.components %>/underscore/underscore.js',
             '<%= gruntConfig.components %>/angular/angular.js',
+            '<%= gruntConfig.components %>/angular-sanitize/angular-sanitize.js',
             '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js'
           ],
           helpers: [
@@ -77,6 +78,7 @@ module.exports = function(grunt) {
         '<%= gruntConfig.dist %>/scripts/scripts.js': [
           '<%= gruntConfig.components %>/underscore/underscore.js',
           '<%= gruntConfig.components %>/angular/angular.js',
+          '<%= gruntConfig.components %>/angular-sanitize/angular-sanitize.js',
           '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js',
           '<%= gruntConfig.scripts %>/sfbike.js',
           '<%= gruntConfig.scripts %>/shared/*.js',
