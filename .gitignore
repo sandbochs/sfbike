@@ -31,6 +31,5 @@
 .idea
 node_modules/*
 vendor/assets/components/*
-public/assets
 _SpecRunner.html
 .grunt/*
