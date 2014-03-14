@@ -1,5 +1,7 @@
 ## Development environment setup
 
+Codeship testing
+
 To develop on sfbike, the following dependencies are required:
 
 ### Bundler
