@@ -29509,11 +29509,8 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
 
   return service;
 }]);
-
 // Source: app/assets/javascripts/map_pane/map_pane_controller.js
 angular.module('sfbike').controller('MapPaneCtrl', ['$scope', 'QueryService', 'MapService', function(scope, queryService, mapService) {
-  window.mp = scope;
-  // Models
   var queryModels, mapModels;
   scope.queryModels = queryService.models;
   queryModels = queryService.models;
@@ -29537,10 +29534,6 @@ angular.module('sfbike').directive('mapPane', function() {
 
 // Source: app/assets/javascripts/nav_pane/nav_pane_controller.js
 angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'MapService', function(scope, queryService, mapService) {
-  window.np = scope;
-  window.qs = queryService;
-  window.ms = mapService;
-
   var queryModels, mapModels, models;
   scope.queryModels = queryService.models;
   queryModels = queryService.models;
@@ -29550,6 +29543,10 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
 
   scope.models = { query: {}, queryInput: { address: '' } };
   models = scope.models;
+
+  scope.parkingItemSelected = function(parking) {
+    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude;
+  };
 
   scope.query = function(input) {
     queryService.save(input).then(function(query) {
@@ -29571,10 +29568,7 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
       scope.renderDirections(query, query.nearby_parking[0]);
     }
   };
-
-  scope.query({ address: '351 California St. 94104' });
 }]);
-
 // Source: app/assets/javascripts/nav_pane/nav_pane_directive.js
 angular.module('sfbike').directive('navPane', function() {
   return {
