@@ -22,6 +22,7 @@
   color: #666;
   font-size: 0.8em;
   cursor: pointer;
+  position: relative;
 
 }
 
@@ -32,6 +33,13 @@
 .parking-menu-item.selected {
   background-color: #1f8dd6;
   color: #fff;
+}
+
+.parking-distance {
+  position: absolute;
+  z-index: 1;
+  top: 1em;
+  right: 0.5em;
 }
 
 .directions-list {
