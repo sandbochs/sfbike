@@ -48,6 +48,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.0)
+    newrelic_rpm (3.7.3.204)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -128,6 +129,7 @@ DEPENDENCIES
   active_model_serializers
   awesome_print
   geocoder
+  newrelic_rpm
   pg
   pry
   rails (= 4.0.3)
