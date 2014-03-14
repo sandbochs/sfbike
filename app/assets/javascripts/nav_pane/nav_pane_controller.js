@@ -20,7 +20,10 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
     mapService.setMapCenter(query.latitude, query.longitude);
 
     if(query.nearby_parking && query.nearby_parking.length > 0) {
+      var nearestParking = query.nearby_parking[0];
+
       scope.renderParking(query.nearby_parking);
+      mapService.bicycleDirections(query, nearestParking);
     }
   }
 
