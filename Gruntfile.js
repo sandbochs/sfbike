@@ -17,30 +17,29 @@ module.exports = function(grunt) {
     dist: { 
       files: [{
         dot: true,
-        options: {force: true},
+        options: { force: true },
         src: [
           '%<= gruntConfig.dist %>'
         ]
       }]
-      },
-      test: {
-        files: [{
-          src: [
-          ]
-        }]
-      },
-      postBuild: {
-        options: {force: true},
-        files: [{
-          src: [
-            '<%= gruntConfig.dist %>/scripts/*', '!<%= gruntConfig.dist %>/scripts/scripts.js'
-          ]
-        }]
-      }
-  }
+    }
+  };
+
+  var watch = {
+    scripts: {
+      files: [
+        '<%= gruntConfig.scripts %>/sfbike.js',
+        '<%= gruntConfig.scripts %>/shared/*.js',
+        '<%= gruntConfig.scripts %>/map_pane/*.js'
+      ],
+      tasks: ['build']
+    }
+  };
+
   grunt.initConfig({
     gruntConfig: gruntConfiguration,
     clean: clean,
+    watch: watch,
     jasmine: {
       sfbike: {
         src: [
@@ -55,7 +54,6 @@ module.exports = function(grunt) {
             '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js'
           ],
           helpers: [
-            '<%= gruntConfig.components %>/angular-scenario/angular-scenario.js',
             '<%= gruntConfig.components %>/angular-mocks/angular-mocks.js'
           ],
           specs: [
@@ -74,8 +72,8 @@ module.exports = function(grunt) {
        },
        files: {
         '<%= gruntConfig.dist %>/scripts/scripts.js': [
-          '<%= gruntConfig.components %>/underscore/underscore-min.js',
-          '<%= gruntConfig.components %>/angular/angular.min.js',
+          '<%= gruntConfig.components %>/underscore/underscore.js',
+          '<%= gruntConfig.components %>/angular/angular.js',
           '<%= gruntConfig.components %>/angular-google-maps/dist/angular-google-maps.js',
           '<%= gruntConfig.scripts %>/sfbike.js',
           '<%= gruntConfig.scripts %>/shared/*.js',
@@ -102,7 +100,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= gruntConfig.app %>',
-          src: ['!.#*.html', '!views/{,*/}*/.#*.html', '!views/.#*.html', '*.html', 'views/*.html', 'views/{,*/}*/*.html'],
+          src: ['*.html', 'views/*.html', 'views/{,*/}*/*.html'],
           dest: '<%= gruntConfig.dist %>'
         }]
       }
@@ -125,7 +123,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'connect:test',
     'jasmine:sfbike',
-    'clean:test'
   ]);
 
   grunt.registerTask('build', [
@@ -133,7 +130,11 @@ module.exports = function(grunt) {
     'imagemin:dist',
     'htmlmin:dist',
     'concat:dist',
-    'clean:postBuild'
+  ]);
+
+  grunt.registerTask('guard', [
+    'build',
+    'watch',
   ]);
 
   grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -142,5 +143,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.registerTask('default', ['test', 'build']);
 };
