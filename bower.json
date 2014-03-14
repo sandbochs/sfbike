@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
+    "angular-sanitize": "latest",
     "angular-google-maps": "latest"
   },
   "devDependencies": {
-    "angular-mocks": "latest",
-    "angular-scenario": "latest"
+    "angular-mocks": "latest"
    }
 }
