@@ -5,7 +5,8 @@ angular.module('sfbike').controller('MapPaneCtrl', ['$scope', 'QueryService', 'M
   scope.mapModels = mapService.models;
   mapModels = mapService.models;
 
-  var coords = { latitude: 37.75415, longitude: -122.489689 };
-  mapModels.options.center = coords;
-  mapModels.options.zoom = 15;
+  // Load a map of San Francisco
+  mapModels.options.center = { latitude: 37.7577, longitude: -122.4376 };
+  mapModels.options.zoom = 13;
+
 }]);

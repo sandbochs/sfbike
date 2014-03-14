@@ -16,15 +16,11 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
   }
 
   service.save = function(query) {
-    var deferred, isValidQuery;
-    deferred = q.defer();
-    isValidQuery = query.address || (query.latitude && query.longitude);
+    var deferred = q.defer();
 
-    if(isValidQuery) {
-      priv.queryPost(query).success(function(data) {
-        deferred.resolve(data);
-      });
-    }
+    priv.queryPost(query).success(function(data) {
+      deferred.resolve(data);
+    });
 
     return deferred.promise;
   }
@@ -34,9 +30,9 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
 
     if(window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(function(pos) {
-        models.coords.latitude = pos.coords.latitude;
-        models.coords.longitude = pos.coords.longitude;
-        deferred.resolve(pos);
+        deferred.resolve(pos.coords);
+      }, function(error) {
+        deferred.reject(error);
       });
     }
 

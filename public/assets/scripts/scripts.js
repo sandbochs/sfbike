@@ -29388,14 +29388,15 @@ angular.module('sfbike').service('MapService', ['$q', function(q) {
   priv = {};
   priv.directionsService = new google.maps.DirectionsService();
   priv.directionsRenderer = new google.maps.DirectionsRenderer();
-
-  // Google Map event handlers
-  events.tilesloaded = function(map) { models.map = map; };
+  priv.initialLoad = true;
 
   service.setMapCenter = function(latitude, longitude) {
     if(models.options.center === null) models.options.center = {};
-    models.options.center.latitude = latitude;
-    models.options.center.longitude = longitude;
+
+    if(latitude && longitude) {
+      models.options.center.latitude = latitude;
+      models.options.center.longitude = longitude;
+    }
   };
 
   priv.directionRequestOptions = function(origin, destination, travelMode) {
@@ -29480,15 +29481,11 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
   }
 
   service.save = function(query) {
-    var deferred, isValidQuery;
-    deferred = q.defer();
-    isValidQuery = query.address || (query.latitude && query.longitude);
+    var deferred = q.defer();
 
-    if(isValidQuery) {
-      priv.queryPost(query).success(function(data) {
-        deferred.resolve(data);
-      });
-    }
+    priv.queryPost(query).success(function(data) {
+      deferred.resolve(data);
+    });
 
     return deferred.promise;
   }
@@ -29498,9 +29495,9 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
 
     if(window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(function(pos) {
-        models.coords.latitude = pos.coords.latitude;
-        models.coords.longitude = pos.coords.longitude;
-        deferred.resolve(pos);
+        deferred.resolve(pos.coords);
+      }, function(error) {
+        deferred.reject(error);
       });
     }
 
@@ -29518,9 +29515,10 @@ angular.module('sfbike').controller('MapPaneCtrl', ['$scope', 'QueryService', 'M
   scope.mapModels = mapService.models;
   mapModels = mapService.models;
 
-  var coords = { latitude: 37.75415, longitude: -122.489689 };
-  mapModels.options.center = coords;
-  mapModels.options.zoom = 15;
+  // Load a map of San Francisco
+  mapModels.options.center = { latitude: 37.7577, longitude: -122.4376 };
+  mapModels.options.zoom = 13;
+
 }]);
 
 // Source: app/assets/javascripts/map_pane/map_pane_directive.js
@@ -29545,8 +29543,24 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
   scope.models = { query: {}, queryInput: { address: '' } };
   models = scope.models;
 
+  // Try to geolocate on page load
+  var firstLoad = true;
+  mapModels.events.tilesloaded = function(map) {
+    mapModels.map = map;
+
+    if(firstLoad) {
+      firstLoad = false;
+
+      queryService.getLocation().then(function(coords) {
+        scope.query(coords);
+      }, function(error){
+        scope.query();
+      });
+    }
+  };
+
   scope.parkingItemSelected = function(parking) {
-    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude;
+    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude && parking.address === models.parking.address;
   };
 
   scope.query = function(input) {
@@ -29570,6 +29584,7 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
     }
   };
 }]);
+
 // Source: app/assets/javascripts/nav_pane/nav_pane_directive.js
 angular.module('sfbike').directive('navPane', function() {
   return {
