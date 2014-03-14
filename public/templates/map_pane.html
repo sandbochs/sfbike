@@ -1,3 +1,7 @@
 <div class='map-pane'>
-  MAP PANE: {{ test }}
+  MAP PANE: {{ test }} | {{ mapOptions.center.latitude }} | {{ mapOptions.center.longitude }}
+
+  <div google-map center='mapOptions.center' zoom='mapOptions.zoom' events='mapOptions.events'>
+    <marker ng-repeat='parking in nearbyParking' coords='parking'></marker>
+  </div>
 </div>
