@@ -13,6 +13,10 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
   scope.models = { query: {}, queryInput: { address: '' } };
   models = scope.models;
 
+  scope.parkingItemSelected = function(parking) {
+    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude;
+  };
+
   scope.query = function(input) {
     queryService.save(input).then(function(query) {
       models.query = query;

@@ -1,8 +1,4 @@
 <div class='map-pane'>
-  <div>
-    <span>Latitude: {{ mapModels.options.center.latitude }}</span>
-    <span>Longitude: {{ mapModels.options.center.longitude }}</span>
-  </div>
   <div google-map center='mapModels.options.center' zoom='mapModels.options.zoom' events='mapModels.events' draggable='true'>
     <marker ng-repeat='marker in mapModels.markers' coords='marker'></marker>
   </div>

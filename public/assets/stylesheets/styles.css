@@ -1,1 +1,113 @@
-.angular-google-map-container { height: 500px; }
+.sidebar-header {
+  color: #fff;
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.parking-menu,
+.directions-list {
+  margin-top: 1em;
+  border-top: 1px solid #333;
+}
+
+.parking-menu-header,
+.directions-list-header {
+  padding: 1em 0.75em;
+  color: #eee;
+  font-size: 1em;
+}
+
+.parking-menu-item {
+  padding: 0.5em 0.75em;
+  color: #666;
+  font-size: 0.8em;
+  cursor: pointer;
+
+}
+
+.parking-menu-item:hover {
+  background-color: #333;
+}
+
+.parking-menu-item.selected {
+  background-color: #1f8dd6;
+  color: #fff;
+}
+
+.directions-list {
+  background-color: #333;
+  padding-bottom: 100em; /* Just a little embarassing */
+}
+
+.directions-list-item {
+  padding: 0.5em 0em;
+  color: #eee;
+  font-size: 1em;
+}
+
+.directions-list-item b {
+  color: #999;
+}
+
+.directions-list-item .item-index {
+  padding-left: 0.5em;
+}
+
+.directions-list-item div {
+  padding-left: 2.5em;
+  padding-top: 0.25em;
+}
+
+.button-small {
+  font-size: 85%;
+}
+
+.query-menu {
+  padding: 0em 0.5em;
+}
+
+.query-menu-item {
+  margin-bottom: 0.75em;
+}
+
+.address-input {
+  width: 80%;
+  margin-right: 0.5em;
+}
+
+.angular-google-map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(61, 146, 201);
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+h3 {
+    font-weight: 100;
+}
+
+/* LAYOUT CSS */
+#layout {
+    padding: 0;
+}
+
+.sidebar {
+    background: #191818;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.content {
+  margin-left: 20%;
+}

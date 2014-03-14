@@ -2,14 +2,21 @@
   <head>
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src='/assets/scripts/scripts.js'></script>
+    <link rel='stylesheet' type='text/css' href='//cdnjs.cloudflare.com/ajax/libs/pure/0.4.2/pure-min.css'></link>
     <link rel='stylesheet' type='text/css' href='/assets/stylesheets/styles.css'></link>
     <title>SFBike</title>
   </head>
 
   <body>
-    <div id='container' ng-app='sfbike'>
-      <div nav-pane></div>
-      <div map-pane></div>
+    <div id='layout' class='pure-g' ng-app='sfbike'>
+      <div class='sidebar pure-u-1-5'>
+        <div class='sidebar-header'>SF Bike</div>
+        <div nav-pane></div>
+      </div>
+
+      <div class='content pure-u-4-5'>
+        <div map-pane></div>
+      </div>
     </div>
   </body>
 </html>

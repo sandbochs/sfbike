@@ -1,28 +1,35 @@
 <div class='nav-pane'>
-  <h3>Nav</h3>
-  <div class='query-input'>
-    <span class='address-input-title'>Address: </span>
-    <input class='address-input' ng-model='models.queryInput.address'></input>
-    <button ng-click='query(models.queryInput)'>Query</button>
-    <button ng-click='query(mapModels.options.center)'>Search within map</button>
-    <a href='#' ng-click='models.queryInput =""'>clear</a>
+  <div class='query-menu'>
+    <div class='query-menu-item'>
+      <input class='address-input' ng-model='models.queryInput.address'></input>
+      <a href='#' ng-click='models.queryInput =""'>clear</a>
+    </div>
+    <div class='query-menu-item'>
+      <button class='pure-button button-small' ng-click='query(models.queryInput)'>Lookup address</button>
+      <button class='pure-button button-small' ng-click='query(mapModels.options.center)'>Search within map</button>
+    </div>
   </div>
   <div class='query-meta-data'>
-    <span class='query-latitude'>Latitude: {{ models.query.latitude }}</span>
-    <span class='query-longitude'>Longitude: {{ models.query.longitude }}</span>
   </div>
 
-  <div>
-    <div ng-repeat='parking in models.query.nearby_parking'>
-      <span>{{ parking.location }}</span>
-      <button ng-click='renderDirections(models.query, parking)'>Directions</button>
+  <div class='parking-menu'>
+    <div class='parking-menu-header'>Nearby Locations</div>
+    <div class='parking-menu-item'
+        ng-repeat='parking in models.query.nearby_parking'
+        ng-click='renderDirections(models.query, parking)'
+        ng-class='{ "selected": parkingItemSelected(parking) }'>
+
+      <div>{{ parking.address }}</div>
+      <div>{{ parking.location }}</div>
     </div>
-    <div>
-      <br>
-      Directions
-      <div ng-repeat='step in models.parking.directions.routes[0].legs[0].steps'>
-        <div ng-bind-html='step.instructions'></div>
-      </div>
+  </div>
+
+  <div class='directions-list'>
+    <div class='directions-list-header'>Directions</div>
+    <div class='directions-list-item'
+        ng-repeat='step in models.parking.directions.routes[0].legs[0].steps'>
+      <span class='item-index'>{{ $index + 1 }}) </span>
+      <span class='item-instructions' ng-bind-html='step.instructions'></span>
     </div>
   </div>
 </div>
