@@ -9,8 +9,24 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
   scope.models = { query: {}, queryInput: { address: '' } };
   models = scope.models;
 
+  // Try to geolocate on page load
+  var firstLoad = true;
+  mapModels.events.tilesloaded = function(map) {
+    mapModels.map = map;
+
+    if(firstLoad) {
+      firstLoad = false;
+
+      queryService.getLocation().then(function(coords) {
+        scope.query(coords);
+      }, function(error){
+        scope.query();
+      });
+    }
+  };
+
   scope.parkingItemSelected = function(parking) {
-    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude;
+    return parking.latitude === models.parking.latitude && parking.longitude === models.parking.longitude && parking.address === models.parking.address;
   };
 
   scope.query = function(input) {

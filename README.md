@@ -1,4 +1,7 @@
+[ ![Codeship Status for sandbochs/sfbike](https://www.codeship.io/projects/f758c4c0-8d8e-0131-79d8-6e593527c391/status?branch=master)](https://www.codeship.io/projects/16035)
 ## Development environment setup
+
+Codeship testing
 
 To develop on sfbike, the following dependencies are required:
 
