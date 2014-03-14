@@ -1,6 +1,6 @@
 [ ![Codeship Status for sandbochs/sfbike](https://www.codeship.io/projects/f758c4c0-8d8e-0131-79d8-6e593527c391/status?branch=master)](https://www.codeship.io/projects/16035)
 
-## San Francisco Bicycle Parking Locator
+## [San Francisco Bicycle Parking Locator](http://fierce-meadow-7609.herokuapp.com/)
 - Full Stack implementation
 - Technical Choices:
 
@@ -92,6 +92,14 @@ Ensure /usr/local/bin is before /usr/bin in your PATH environment variable or yo
 Create the pgbike user.
 
     > createuser -s pgbike
+    
+Migrate Database
+
+    > rake db:migrate
+    
+Load Bicycle Parking from DataSF API
+
+    > rake import:from_api
 
 #### Javascript Compilation
 
