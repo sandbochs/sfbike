@@ -29509,6 +29509,7 @@ angular.module('sfbike').service('QueryService', ['$window', '$http', '$q', func
 
   return service;
 }]);
+
 // Source: app/assets/javascripts/map_pane/map_pane_controller.js
 angular.module('sfbike').controller('MapPaneCtrl', ['$scope', 'QueryService', 'MapService', function(scope, queryService, mapService) {
   var queryModels, mapModels;
