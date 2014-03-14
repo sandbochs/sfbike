@@ -29388,7 +29388,6 @@ angular.module('sfbike').service('MapService', ['$q', function(q) {
   priv = {};
   priv.directionsService = new google.maps.DirectionsService();
   priv.directionsRenderer = new google.maps.DirectionsRenderer();
-  priv.initialLoad = true;
 
   service.setMapCenter = function(latitude, longitude) {
     if(models.options.center === null) models.options.center = {};
