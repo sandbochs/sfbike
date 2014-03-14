@@ -1,6 +1,4 @@
 angular.module('sfbike').controller('MapPaneCtrl', ['$scope', 'QueryService', 'MapService', function(scope, queryService, mapService) {
-  window.mp = scope;
-  // Models
   var queryModels, mapModels;
   scope.queryModels = queryService.models;
   queryModels = queryService.models;

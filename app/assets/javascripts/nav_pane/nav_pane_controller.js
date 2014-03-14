@@ -1,8 +1,4 @@
 angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'MapService', function(scope, queryService, mapService) {
-  window.np = scope;
-  window.qs = queryService;
-  window.ms = mapService;
-
   var queryModels, mapModels, models;
   scope.queryModels = queryService.models;
   queryModels = queryService.models;
@@ -37,6 +33,4 @@ angular.module('sfbike').controller('NavPaneCtrl', ['$scope', 'QueryService', 'M
       scope.renderDirections(query, query.nearby_parking[0]);
     }
   };
-
-  scope.query({ address: '351 California St. 94104' });
 }]);
